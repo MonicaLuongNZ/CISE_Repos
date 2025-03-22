@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Run the tests
-        run: npm test
+        run: npm run --prefix ./worksheet2/my-nest-app test
 
       - name: Build
-        run: npm run build
+        run: npm run --prefix ./worksheet2/my-nest-app build
