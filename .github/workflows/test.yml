@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependecies
-        run: cd worksheet4/frontent && npm install
+        run: cd worksheet4/frontend && npm install
 
       - name: Run test
-        run: cd worksheet4/frontent && npm run test:ci
+        run: cd worksheet4/frontend && npm run test:ci
