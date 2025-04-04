@@ -9,13 +9,15 @@ const CreateBookComponent = () => {
   const [book, setBook] = useState<Book>(DefaultEmptyBook);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
+
     setBook({ ...book, [event.target.name]: event.target.value });
   };
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     console.log(book);
-    fetch("process.env.NEXT_PUBLIC_BACKEND_URL + `/api/books/${id}`", {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(book)})
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/books`, {method: 'POST', headers: {"Content-Type": "application/json"}, body: JSON.stringify(book)})
       .then((res) => {
         console.log(res);
         setBook(DefaultEmptyBook);
@@ -91,7 +93,7 @@ const CreateBookComponent = () => {
                   placeholder="published_date"
                   name="published_date"
                   className="form-control"
-                  value={book.published_date?.toString()}
+                  value={book.published_date?.toString() || ''}
                   onChange={onChange}
                 />
               </div>
